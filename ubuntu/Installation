@@ -1,5 +1,9 @@
 # Initial setup for ubuntu
-sudo apt install git curl zsh
+sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev \
+libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
+xz-utils tk-dev git zsh 
+sudo apt update
+sudo apt upgrade
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
@@ -7,3 +11,13 @@ git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc       
 echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc       
 echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.zshrc  
+source .zshrc
+pyenv install 3.6.3
+
+# jetbrains
+wget https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.6.2914.tar.gz
+tar -xzf jetbrains-toolbox-1.6.2914.tar.gz
+cd jetbrains-toolbox-1.6.2914
+./jetbrains-toolbox 
+cd ..
+rm -rf jetbrains-toolbox-1.6.2914
